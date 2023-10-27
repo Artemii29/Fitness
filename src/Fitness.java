@@ -17,12 +17,9 @@ public class Fitness {
                 if (membership.getType() == Type.DAY) {
                     System.out.println("Day memberships are not allowed in the pool.");
                 } else if (count1 < 20) {
-                    for (int i = 0; i < count1; i++) {
-                        if (poolMemberships[i] != membership) {
-                            poolMemberships[count1++] = membership;
-                        }
-                    }
-                } else {
+                    poolMemberships[count2++] = membership;
+                }
+              else {
                     System.out.println("Мест нет");
                 }
             } else if (membership.zone == Zone.GYM) {
