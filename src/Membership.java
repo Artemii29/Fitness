@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Membership {
     protected Type type;
@@ -8,12 +9,13 @@ public class Membership {
     protected LocalDateTime dateCreated;
     protected LocalDateTime dateFinished;
 
-    public Membership(Type type, Zone zone, int number, Owner owner) {
+    public Membership(Type type, Zone zone, int number, Owner owner, String dateTime) {
         this.type = type;
         this.zone = zone;
         this.number = number;
         this.owner = owner;
         this.dateCreated = LocalDateTime.now();
+        this.dateFinished = LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
     }
 
     public Zone getZone() {
