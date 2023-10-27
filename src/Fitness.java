@@ -1,32 +1,18 @@
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Fitness {
+    private LocalDateTime currentDate = LocalDateTime.now();
     private Membership[] gymMemberships = new Membership[20];
     private int count1 = 0;
     private int count2 = 0;
     private int count3 = 0;
     private Membership[] poolMemberships = new Membership[20];
     private Membership[] groupMemberships = new Membership[20];
-    public boolean checkMembership(Membership membership) {
-        for (Membership m : gymMemberships) {
-            if (m == membership) {
-                return true;
-            }
-        }
-        for (Membership m : poolMemberships) {
-            if (m == membership) {
-                return true;
-            }
-        }
-        for (Membership m : groupMemberships) {
-            if (m == membership) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     public void addMembership(Membership membership) {
+        if(membership.getDateFinished().isBefore(currentDate) ){
+            System.out.println("Ваш абонемент просрочен");
+        }
         if (membership.zone == Zone.POOL) {
             if(membership.getType() == Type.DAY){
                 System.out.println("Day memberships are not allowed in the pool.");
@@ -49,6 +35,10 @@ public class Fitness {
                 System.out.println("Мест нет");
             }
         } else if (membership.zone == Zone.GROUP) {
+            if(membership.type ==Type.DAY){
+                System.out.println("One memberships are not allowed in the pool.");
+
+            }
             if (count3 < 20) {
                 groupMemberships[count3++] = membership;
             } else {

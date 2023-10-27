@@ -1,17 +1,25 @@
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Membership {
     protected Type type;
     protected Zone zone;
     protected int number;
     protected Owner owner;
-    protected Date dateCreated;
-    protected Date dateFinshed;
+    protected LocalDateTime dateCreated;
+    protected LocalDateTime dateFinished;
 
+    public Membership(Type type, Zone zone, int number, Owner owner) {
+        this.type = type;
+        this.zone = zone;
+        this.number = number;
+        this.owner = owner;
+        this.dateCreated = LocalDateTime.now();
+    }
 
     public Zone getZone() {
         return zone;
     }
+
     public int getNumber() {
         return number;
     }
@@ -20,25 +28,24 @@ public class Membership {
         return owner;
     }
 
-    public Date getDateCreated() {
+    public LocalDateTime getDateCreated() {
         return dateCreated;
     }
 
-    public Date getDateFinshed() {
-        return dateFinshed;
+    public LocalDateTime getDateFinished() {
+        return dateFinished;
     }
 
     public Type getType() {
         return type;
     }
 
-    protected Membership(Type type, Zone zone, int number, Owner owner, Date dateCreated, Date dateFinshed ) {
+    protected Membership(Type type, Zone zone, int number, Owner owner, LocalDateTime dateCreated, LocalDateTime dateFinished) {
         this.type = type;
         this.zone = zone;
         this.number = number;
         this.owner = owner;
         this.dateCreated = dateCreated;
-        this.dateFinshed = dateFinshed;
-
+        this.dateFinished = dateFinished;
     }
 }
